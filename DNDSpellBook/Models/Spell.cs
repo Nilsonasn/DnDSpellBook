@@ -42,7 +42,7 @@ namespace DNDSpellBook.Models
         public string Casting_Time { get; set; }
         public int Level { get; set; }
         public CastSchool School { get; set; }
-        public CastClass Class { get; set; }
+        public List<CastClass> Classes { get; set; }
 
         public Spell(SpellRAW spellRAW)
         {
@@ -59,7 +59,7 @@ namespace DNDSpellBook.Models
             Casting_Time = spellRAW.Casting_Time;
             Level = ConvertToSpellLevel(spellRAW.Level);
             School = ConvertToSchool(spellRAW.School);
-            Class = ConvertToClass(spellRAW.Class);
+            Classes = ConvertToClass(spellRAW.Class);
         }
 
         private CastSchool ConvertToSchool(string school)
@@ -77,9 +77,17 @@ namespace DNDSpellBook.Models
             return castSchool;
         }
 
-        private CastClass ConvertToClass(string c)
+        private List<CastClass> ConvertToClass(string c)
         {
-            throw new NotImplementedException();
+            string classString = c;
+            List<CastClass> castClasses = new List<CastClass>();
+            foreach (var cls in Enum.GetValues(typeof(CastClass)).Cast<CastClass>())
+            {
+                if (classString.ToUpper().Contains(cls.ToString().ToUpper())){
+                    castClasses.Add(cls);
+                }
+            }
+            return castClasses;
         }
 
         private int ConvertToSpellLevel(string spellLevelString)
@@ -103,6 +111,15 @@ namespace DNDSpellBook.Models
             }
             return spellLevelInt;
 
+        }
+        public static List<Spell> ConvertRawSpells(List<SpellRAW> rawSpells)
+        {
+            List<Spell> spells = new List<Spell>();
+            foreach(SpellRAW rawSp in rawSpells)
+            {
+                spells.Add(new Spell(rawSp));
+            }
+            return spells;
         }
     }
 }

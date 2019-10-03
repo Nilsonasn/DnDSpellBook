@@ -4,7 +4,7 @@
 <h3>Spells Home</h3>
 
 <label>Search: </label>
-<input type="text" @bind-value="@searchTerm" @bind-value:event="oninput"/>
+<input type="text" @bind-value="@searchTerm" @bind-value:event="oninput" />
 
 @if (!loaded)
 {
@@ -12,26 +12,37 @@
 }
 else
 {
-
-    @foreach (var spell in filteredSpells)
+    @foreach (CastClass cc in CastClasses)
     {
-        <div>@spell.Name</div>
+        <h2>@cc.ToString()</h2>
+        @foreach (var spell in filteredSpells)
+        {
+            if ((spell.Classes.Where(x => x == cc).ToList().Count) > 0)
+            {
+                <div>@spell.Name</div>
+            }
+        }
     }
-    
 }
 
 
 @code {
-    List<SpellRAW> spells = new List<SpellRAW>();
+    List<SpellRAW> rawSpells = new List<SpellRAW>();
+    List<Spell> spells = new List<Spell>();
+    List<CastClass> CastClasses = Enum.GetValues(typeof(CastClass)).Cast<CastClass>().ToList();
+
 
     bool loaded = false;
-    string searchTerm  { get; set; } = "";
+    string searchTerm { get; set; } = "";
 
     protected override async Task OnInitializedAsync()
     {
-        spells = await Http.GetJsonAsync<List<SpellRAW>>("spell-data/spells2.json");
+        rawSpells = await Http.GetJsonAsync<List<SpellRAW>>("spell-data/spells2.json");
+        spells = Spell.ConvertRawSpells(rawSpells);
         loaded = true;
     }
 
-    List<SpellRAW> filteredSpells => spells.Where(i => i.Name.ToUpper().Contains(searchTerm.ToUpper())).ToList();
+
+
+    List<Spell> filteredSpells => spells.Where(i => i.Name.ToUpper().Contains(searchTerm.ToUpper())).ToList();
 }
