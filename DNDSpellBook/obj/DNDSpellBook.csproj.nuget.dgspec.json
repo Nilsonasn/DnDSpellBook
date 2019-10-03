@@ -1,30 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj": {}
+    "C:\\Users\\mrand\\Documents\\KILL ME\\DnDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj": {
+    "C:\\Users\\mrand\\Documents\\KILL ME\\DnDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj",
+        "projectUniqueName": "C:\\Users\\mrand\\Documents\\KILL ME\\DnDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj",
         "projectName": "DNDSpellBook",
-        "projectPath": "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj",
-        "packagesPath": "C:\\Users\\trevo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\obj\\",
+        "projectPath": "C:\\Users\\mrand\\Documents\\KILL ME\\DnDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj",
+        "packagesPath": "C:\\Users\\mrand\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mrand\\Documents\\KILL ME\\DnDSpellBook\\DNDSpellBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\trevo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mrand\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\NuGet": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },

@@ -92,9 +92,15 @@ namespace DNDSpellBook.Models
             }
             else
             {
-                int.TryParse(spellLevelString,)){
-                }
+                if (int.TryParse(spellLevelString, out spellLevelInt))
+                {
 
+                }
+                else
+                {
+                    spellLevelInt = -1;
+                }
+            }
             return spellLevelInt;
 
         }
