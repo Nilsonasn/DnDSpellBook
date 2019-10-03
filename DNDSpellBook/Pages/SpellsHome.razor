@@ -19,17 +19,19 @@ else
     {
         @*<h2>@cc.ToString() <button class="" onclick="@ExpandSpells(cc)">+</button></h2>*@
         <ExpanderComponent title="@cc.ToString()">
-            
+            <SpellList>
+                @foreach (var spell in filteredSpells)
+                {
+                    if ((spell.Classes.Where(x => x == cc).ToList().Count) > 0)
+                    {
+                        <div>@spell.Name</div>
+                    }
+                }
+            </SpellList>
         </ExpanderComponent>
         <div class="@cc.ToString()+Spells">
          
-        @foreach (var spell in filteredSpells)
-        {
-            if ((spell.Classes.Where(x => x == cc).ToList().Count) > 0)
-            {
-                <div>@spell.Name</div>
-            }
-        }
+        
         </div>
     }
 }

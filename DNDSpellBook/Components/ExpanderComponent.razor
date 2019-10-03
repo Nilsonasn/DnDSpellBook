@@ -1,16 +1,20 @@
 ﻿<div class="expander-item">
-    <h2>@title <button onclick="@Expand()">+</button></h2> 
+    <h2>@title <button @onclick="Expand">+</button></h2> 
     
     <div style="@showorhide"class="Content">
-        well lets just see if this works
+        @SpellList
     </div>
 </div>
 
 @code {
     [Parameter] public string title { get; set; }
+    [Parameter] public RenderFragment SpellList { get; set; }
     public string showorhide  { get; set; } = "display:none;";
 
-    int Expand()
+    
+}
+@functions{
+    private void Expand()
     {
         if(showorhide == "display:none;")
         {
@@ -20,9 +24,5 @@
         {
             showorhide = "display:none;";
         }
-        return 0;
     }
-}
-@functions{
-
 }
