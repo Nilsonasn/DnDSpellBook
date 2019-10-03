@@ -1,0 +1,28 @@
+﻿<div class="expander-item">
+    <h2>@title <button onclick="@Expand()">+</button></h2> 
+    
+    <div style="@showorhide"class="Content">
+        well lets just see if this works
+    </div>
+</div>
+
+@code {
+    [Parameter] public string title { get; set; }
+    public string showorhide  { get; set; } = "display:none;";
+
+    int Expand()
+    {
+        if(showorhide == "display:none;")
+        {
+            showorhide = "display:block;";
+        }
+        else
+        {
+            showorhide = "display:none;";
+        }
+        return 0;
+    }
+}
+@functions{
+
+}

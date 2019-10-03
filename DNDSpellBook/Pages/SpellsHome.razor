@@ -1,10 +1,13 @@
 ﻿@page "/spells"
 @inject HttpClient Http
+@using DNDSpellBook.Components
+    
 
 <h3>Spells Home</h3>
 
 <label>Search: </label>
 <input type="text" @bind-value="@searchTerm" @bind-value:event="oninput" />
+
 
 @if (!loaded)
 {
@@ -14,7 +17,12 @@ else
 {
     @foreach (CastClass cc in CastClasses)
     {
-        <h2>@cc.ToString()</h2>
+        @*<h2>@cc.ToString() <button class="" onclick="@ExpandSpells(cc)">+</button></h2>*@
+        <ExpanderComponent title="@cc.ToString()">
+            
+        </ExpanderComponent>
+        <div class="@cc.ToString()+Spells">
+         
         @foreach (var spell in filteredSpells)
         {
             if ((spell.Classes.Where(x => x == cc).ToList().Count) > 0)
@@ -22,6 +30,7 @@ else
                 <div>@spell.Name</div>
             }
         }
+        </div>
     }
 }
 
@@ -45,4 +54,12 @@ else
 
 
     List<Spell> filteredSpells => spells.Where(i => i.Name.ToUpper().Contains(searchTerm.ToUpper())).ToList();
+    
+    public int ExpandSpells(CastClass cc)
+    {
+        return 0;
+    }
+}
+@functions{
+    
 }

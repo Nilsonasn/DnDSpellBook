@@ -262,3 +262,5 @@ C:\Users\mrand\Documents\KILL ME\DnDSpellBook\DNDSpellBook\obj\Debug\netstandard
 C:\Users\mrand\Documents\KILL ME\DnDSpellBook\DNDSpellBook\obj\Debug\netstandard2.0\blazor\linker\DNDSpellBook.pdb
 C:\Users\mrand\Documents\KILL ME\DnDSpellBook\DNDSpellBook\obj\Debug\netstandard2.0\blazor\inputs.bootjson.cache
 C:\Users\mrand\Documents\KILL ME\DnDSpellBook\DNDSpellBook\obj\Debug\netstandard2.0\blazor\blazor.boot.json
+C:\Users\mrand\Documents\KILL ME\DnDSpellBook\DNDSpellBook\obj\Debug\netstandard2.0\RazorDeclaration\Components\ExpanderComponent.razor.g.cs
+C:\Users\mrand\Documents\KILL ME\DnDSpellBook\DNDSpellBook\obj\Debug\netstandard2.0\Razor\Components\ExpanderComponent.razor.g.cs
