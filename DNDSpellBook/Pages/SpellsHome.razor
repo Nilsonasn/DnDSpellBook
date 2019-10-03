@@ -1,0 +1,28 @@
+﻿@page "/spells"
+@inject HttpClient Http
+
+<h3>Spells Home</h3>
+
+@if (!loaded)
+{
+    <div>Loading your spellbook...</div>
+}
+else
+{
+    @foreach (var spell in spells)
+    {
+        <div>@spell.Name</div>
+    }
+}
+
+
+@code {
+    List<SpellRAW> spells = new List<SpellRAW>();
+    bool loaded = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        spells = await Http.GetJsonAsync<List<SpellRAW>>("spell-data/spells2.json");
+        loaded = true;
+    }
+}
