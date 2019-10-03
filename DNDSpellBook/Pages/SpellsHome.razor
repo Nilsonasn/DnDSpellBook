@@ -3,26 +3,35 @@
 
 <h3>Spells Home</h3>
 
+<label>Search: </label>
+<input type="text" @bind-value="@searchTerm" @bind-value:event="oninput"/>
+
 @if (!loaded)
 {
     <div>Loading your spellbook...</div>
 }
 else
 {
-    @foreach (var spell in spells)
+
+    @foreach (var spell in filteredSpells)
     {
         <div>@spell.Name</div>
     }
+    
 }
 
 
 @code {
     List<SpellRAW> spells = new List<SpellRAW>();
+
     bool loaded = false;
+    string searchTerm  { get; set; } = "";
 
     protected override async Task OnInitializedAsync()
     {
         spells = await Http.GetJsonAsync<List<SpellRAW>>("spell-data/spells2.json");
         loaded = true;
     }
+
+    List<SpellRAW> filteredSpells => spells.Where(i => i.Name.ToUpper().Contains(searchTerm.ToUpper())).ToList();
 }
