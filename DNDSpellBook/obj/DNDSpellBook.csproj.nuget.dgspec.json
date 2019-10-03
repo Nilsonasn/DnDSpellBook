@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj": {}
+    "C:\\Users\\trevo\\Source\\Repos\\DNDSpellBookGitHub\\DNDSpellBook\\DNDSpellBook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj": {
+    "C:\\Users\\trevo\\Source\\Repos\\DNDSpellBookGitHub\\DNDSpellBook\\DNDSpellBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj",
+        "projectUniqueName": "C:\\Users\\trevo\\Source\\Repos\\DNDSpellBookGitHub\\DNDSpellBook\\DNDSpellBook.csproj",
         "projectName": "DNDSpellBook",
-        "projectPath": "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\DNDSpellBook.csproj",
+        "projectPath": "C:\\Users\\trevo\\Source\\Repos\\DNDSpellBookGitHub\\DNDSpellBook\\DNDSpellBook.csproj",
         "packagesPath": "C:\\Users\\trevo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trevo\\source\\repos\\DNDSpellBook\\DNDSpellBook\\obj\\",
+        "outputPath": "C:\\Users\\trevo\\Source\\Repos\\DNDSpellBookGitHub\\DNDSpellBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
