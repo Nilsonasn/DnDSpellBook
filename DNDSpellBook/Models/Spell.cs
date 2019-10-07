@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace DNDSpellBook.Models
 {
-    public enum CastClass { Bard, Cleric, Druid, Paladin, Ranger, Ritual_Caster, Sorcerer, Warlock, Wizard }
+    
     public enum CastSchool { Abjuration, Conjuration, Divination, Enchantment, Evocation, Necromancy, Telemancy, NONE }
+    public enum CastLevel { Cantrip, First_Level, Second_Level, Third_Level, Fourth_Level, Fifth_Level, Sixth_Level, Seventh_Level, Eighth_Level, Ninth_Level}
 
     public class SpellRAW
     {
@@ -40,7 +41,7 @@ namespace DNDSpellBook.Models
         public string Duration { get; set; }
         public string Concentration { get; set; }
         public string Casting_Time { get; set; }
-        public int Level { get; set; }
+        public CastLevel Level { get; set; }
         public CastSchool School { get; set; }
         public List<CastClass> Classes { get; set; }
 
@@ -77,6 +78,43 @@ namespace DNDSpellBook.Models
             return castSchool;
         }
 
+        public string LevelString()
+        {
+            return CastLevelToString(Level);
+        }
+        static public string IntToSpellString(int level)
+        {
+            return CastLevelToString((CastLevel)level);
+        }
+        static public string CastLevelToString(CastLevel level)
+        {
+            switch ((int)level)
+            {
+                case 0:
+                    return "Cantrip";
+                case 1:
+                    return "1st Level";
+                case 2:
+                    return "2nd Level";
+                case 3:
+                    return "3rd Level";
+                case 4:
+                    return "4th level";
+                case 5:
+                    return "5th level";
+                case 6:
+                    return "6th level";
+                case 7:
+                    return "7th level";
+                case 8:
+                    return "8th level";
+                case 9:
+                    return "9th level";
+                default:
+                    return "none";
+            }
+        }
+
         private List<CastClass> ConvertToClass(string c)
         {
             string classString = c;
@@ -90,7 +128,7 @@ namespace DNDSpellBook.Models
             return castClasses;
         }
 
-        private int ConvertToSpellLevel(string spellLevelString)
+        private CastLevel ConvertToSpellLevel(string spellLevelString)
         {
             int spellLevelInt;
 
@@ -100,7 +138,7 @@ namespace DNDSpellBook.Models
             }
             else
             {
-                if (int.TryParse(spellLevelString, out spellLevelInt))
+                if (int.TryParse(spellLevelString.Substring(0,1), out spellLevelInt))
                 {
 
                 }
@@ -109,7 +147,7 @@ namespace DNDSpellBook.Models
                     spellLevelInt = -1;
                 }
             }
-            return spellLevelInt;
+            return (CastLevel)spellLevelInt;
 
         }
         public static List<Spell> ConvertRawSpells(List<SpellRAW> rawSpells)

@@ -1,0 +1,43 @@
+﻿<div class="caster-item">
+    <ExpanderComponent Label="@Caster.CasterName.ToString()">
+        <ExpanderContent>
+            @foreach (CastLevel cl in Enum.GetValues(typeof(CastLevel)).Cast<CastLevel>().ToList())
+            {
+                if (Caster.ClassSpells.Any(sp => sp.Level == cl))
+                {
+                    <ExpanderComponent Label="@Spell.CastLevelToString(cl)">
+                        <ExpanderContent>
+                            <table>
+                                <tr>
+                                    <th>Spell Name</th>
+                                    <th>Range</th>
+                                    <th>Duration</th>
+                                    <th>Cast Time</th>
+                                    <th>Page Number</th>
+                                </tr>
+
+                                @foreach (Spell spell in Caster.ClassSpells.Where(sp => sp.Level == cl))
+                                {
+                                    <tr>
+                                        <td>@spell.Name</td>
+                                        <td>@spell.Range</td>
+                                        <td>@spell.Duration</td>
+                                        <td>@spell.Casting_Time</td>
+                                        <td>@spell.Page</td>
+                                    </tr>
+                                }
+                                    
+                                </table>
+                        </ExpanderContent>
+                    </ExpanderComponent>
+                }
+            }
+        </ExpanderContent>
+    </ExpanderComponent>
+</div>
+
+@code {
+    [Parameter] public CasterClass Caster { get; set; }
+}
+
+

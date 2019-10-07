@@ -1,47 +1,34 @@
 ﻿@page "/spells"
 @inject HttpClient Http
 @using DNDSpellBook.Components
-    
 
-<h3>Spells Home</h3>
+    <div class="page">
+        <h3>Spells Home</h3>
 
-<label>Search: </label>
-<input type="text" @bind-value="@searchTerm" @bind-value:event="oninput" />
+        <label>Search: </label>
+        <input type="text" @bind-value="@searchTerm" @bind-value:event="oninput" />
 
 
-@if (!loaded)
-{
-    <div>Loading your spellbook...</div>
-}
-else
-{
-    @foreach (CastClass cc in CastClasses)
-    {
-        @*<h2>@cc.ToString() <button class="" onclick="@ExpandSpells(cc)">+</button></h2>*@
-        <ExpanderComponent title="@cc.ToString()">
-            <SpellList>
-                @foreach (var spell in filteredSpells)
-                {
-                    if ((spell.Classes.Where(x => x == cc).ToList().Count) > 0)
-                    {
-                        <div>@spell.Name</div>
-                    }
-                }
-            </SpellList>
-        </ExpanderComponent>
-        <div class="@cc.ToString()+Spells">
-         
-        
-        </div>
-    }
-}
+        @if (!loaded)
+        {
+            <div>Loading your spellbook...</div>
+        }
+        else
+        {
+            @foreach (CasterClass cc in CasterClasses)
+            {
+                <CasterComponent Caster="@cc" />
 
+
+
+            }
+        }
+    </div>
 
 @code {
     List<SpellRAW> rawSpells = new List<SpellRAW>();
     List<Spell> spells = new List<Spell>();
-    List<CastClass> CastClasses = Enum.GetValues(typeof(CastClass)).Cast<CastClass>().ToList();
-
+    List<CasterClass> CasterClasses = new List<CasterClass>();
 
     bool loaded = false;
     string searchTerm { get; set; } = "";
@@ -50,18 +37,20 @@ else
     {
         rawSpells = await Http.GetJsonAsync<List<SpellRAW>>("spell-data/spells2.json");
         spells = Spell.ConvertRawSpells(rawSpells);
+
+        foreach (CastClass cc in Enum.GetValues(typeof(CastClass)).Cast<CastClass>().ToList())
+        {
+            CasterClasses.Add(new CasterClass(cc, spells));
+        }
         loaded = true;
     }
 
 
 
     List<Spell> filteredSpells => spells.Where(i => i.Name.ToUpper().Contains(searchTerm.ToUpper())).ToList();
-    
-    public int ExpandSpells(CastClass cc)
-    {
-        return 0;
-    }
+
+
 }
 @functions{
-    
+
 }

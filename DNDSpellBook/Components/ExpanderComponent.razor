@@ -1,28 +1,36 @@
-﻿<div class="expander-item">
-    <h2>@title <button @onclick="Expand">+</button></h2> 
-    
-    <div style="@showorhide"class="Content">
-        @SpellList
+﻿<div class="caster-item">
+    <h2>@Label <button @onclick="Expand">@btnIcon</button></h2>
+    <div class="Content">
+        @if (show)
+        {
+            @ExpanderContent
+        }
     </div>
 </div>
 
 @code {
-    [Parameter] public string title { get; set; }
-    [Parameter] public RenderFragment SpellList { get; set; }
-    public string showorhide  { get; set; } = "display:none;";
+    [Parameter] public RenderFragment ExpanderContent { get; set; }
+    [Parameter] public String Label { get; set; }
 
-    
-}
-@functions{
+    public string btnIcon { get; set; } = "+";
+    public bool show { get; set; } = false;
     private void Expand()
     {
-        if(showorhide == "display:none;")
+        show = !show;
+
+        switch(btnIcon)
         {
-            showorhide = "display:block;";
+            case "+":
+                btnIcon = "-";
+                break;
+            case "-":
+                btnIcon = "+";
+                break;
+            default:
+                btnIcon = "+";
+                break;
         }
-        else
-        {
-            showorhide = "display:none;";
-        }
+
     }
 }
+    
